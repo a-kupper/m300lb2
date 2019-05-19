@@ -42,14 +42,18 @@ Informationen zu laufendem Prozess im Container<br>
 
 ## Was habe ich gemacht
 
-Aus Zeitgründen, auf welche ich später noch genäuer eingehen werde, ist mein Projekt eher ein Projektchen geworden. 
-Im grossen und ganzen habe ich einen kleinen Webserver mit einem Python-App aufgesetzt welches zufällige Katzen-Gifs anzeigt. Mit dem Befehl
-`docker run -p 8888:5000 a-kupper/webapp`<br>
-Starte ich den Container lokal auf Port 5000, erreichbar von aussen über Port 8888. 
+Ein kleines Docker-Compose. Gestartet werden ein DB-Server (MariaDB) mit phpMyAdmin und ein Apache-Webserver.
+Im phpapache\Dockefile füge ich als erstes einige Extensions hinzu, einfach als proof of conzept. Anschliessend konfiguriere ich Apache usw. und importiere noch ein Zertifikat.
+In docker-compose gebe ich noch die geöffneten Ports über das .env-File mit, ebenso wie die Standardkonfigurationsdaten für MySQL.
+Obwohl dieses Projektimmernoch relativ klein ist, kam mir nicht wirklich etwas besseres in den Sinn. Ich habe das gefühl, dass man für wirklich umfangreiche Docker-Projekte eine etwas vernünftigere Testumgebung als ein Notebook haben muss.
 
-Die ausgeführte Konfiguration im Container ging leider beim Ausführen eines Powershell-Skriptes verloren.
 
 ## Schwierigkeiten
 
-Mit Abstand das grösste Problem war das Zerschiessen meines Arbeits-Notebooks, die fehlenden Backups und der damit verbundene Datenverlust. Bei der Wiederherstellung der Daten konnte ich irgendwie das Image eines kleineren Projektes wiedererlangen, das gebe ich nun ab.
-Leider reichte die Zeit für einen Neustart nicht mehr aus da ich sowohl im Geschäft als auch Privat im Moment mehr als voll ausgelastet bin.
+Mit Abstand das grösste Problem war das Zerschiessen meines Arbeits-Notebooks, die fehlenden Backups und der damit verbundene Datenverlust. Bei der Wiederherstellung der Daten konnte ich irgendwie das Image eines kleineren Projektes wiedererlangen, welches ich unterdessen für diese Abgabe verworfen habe.
+Schwierigkeiten hatte ich mit diesem Projekt nur insofern, dass Docker für Windows sich anders verhält als Docker über Vagrant und ich mit den Rechten, welche Docker braucht, ein wenig kämpfen musste.
+
+
+## Fazit
+
+Docker ist ein sehr interessantes und mächtiges Tool welches ich aber noch nicht für meinen Arbeitsalltag einsetzen kann. Ich denke aber, dass dieser Einblick in Container mir sicherlich helfen wird sobald ich mich das nächste Mal mit Docker beschäftigen muss.
