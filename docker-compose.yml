@@ -1,0 +1,38 @@
+version: '3.1'
+services:
+
+  mariadb:
+    image: mariadb:10.1
+    container_name: testdocker-mariadb
+    working_dir: /application
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=rootdb
+      - MYSQL_USER=dbuser
+      - MYSQL_PASSWORD=dbpassword
+    ports:
+      - "${MYSQL_PORT}:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:4.8.3
+    container_name: testdocker-phpmyadmin
+    working_dir: /application
+    links:
+      - mariadb:db
+    ports:
+      - "${PHPMYADMIN_PORT}:80"
+
+  phpapache:
+    build:
+      context: ./phpapache
+      
+    ports:
+      - "${HTTP_PORT}:80"
+      - "${HTTPS_PORT}:443"
+
+    volumes:
+      - ${WEBROOT}:/var/www:z
+volumes:
+  ? db
